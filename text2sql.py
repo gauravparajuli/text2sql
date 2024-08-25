@@ -7,6 +7,16 @@ from langchain.schema.output_parser import StrOutputParser
 
 load_dotenv()
 
+# function to retrieve data from the database
+def read_sql_query(sql, db):
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+    cursor.execute()
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+    return rows
+
 model = ChatOpenAI(model='gpt-4o-mini')
 
 prompt_template = ChatPromptTemplate.from_messages(
