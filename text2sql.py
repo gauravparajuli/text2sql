@@ -59,9 +59,12 @@ submit = st.button('Query')
 if submit:
     if question:
         sql = chain.invoke({'input': question})
-        st.subheader('Generated SQL')
-        st.write(sql)
-        result = read_sql_query(sql, 'student_records.db')
-        st.subheader('Retrieved Data')
-        for row in result:
-            st.write(row)
+        if sql == 'Given query cannot be converted to SQL':
+           st.subheader('Given query cannot be translated to SQL') 
+        else:
+            st.subheader('Generated SQL')
+            st.write(sql)
+            result = read_sql_query(sql, 'student_records.db')
+            st.subheader('Retrieved Data')
+            for row in result:
+                st.write(row)
