@@ -28,3 +28,6 @@ print('data inserted are:')
 data = cursor.execute('select * from student')
 for row in data:
     print(row)
+
+conn.commit()
+conn.close()
